@@ -1,0 +1,34 @@
+<h1>
+    See Recent Shipments
+</h1>
+
+<div *ngIf="shipments.length > 0;">
+    <table>
+        <thead>
+            <tr>
+                <th>Order Number</th>
+                <th>Order Date</th>
+                <th>Required Date</th>
+                <th>Status</th>
+                <th>Customer Number</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let shipment of shipments">
+                <td>{{shipment.orderNumber }}</td>
+                <td>{{ shipment.orderDate }}</td>
+                <td>{{ shipment.requiredDate }}</td>
+                <td>{{ shipment.status }}</td>
+                <td>{{ shipment.customerNumber }}</td>
+                <td>
+                    <button (click)="viewOrderDetails(shipment.orderNumber, shipment.customerNumber)" routerLink="/getOrderDetails/{{shipment.orderNumber}}/{{shipment.customerNumber}}" class="large-button">Show Detail</button>
+                </td>
+            </tr>
+        <tbody>
+    </table>
+
+</div>
+<ng-template #noData>
+    <p>No shipments found.</p>
+</ng-template>

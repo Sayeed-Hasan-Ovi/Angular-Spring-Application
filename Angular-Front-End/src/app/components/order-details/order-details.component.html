@@ -1,0 +1,35 @@
+<h1>Order Details</h1>
+
+<div *ngIf="orderDetails.length > 0; else noData">
+    <table>
+        <thead>
+            <tr>
+                <th>Product Code</th>
+                <th>Quantity Ordered</th>
+                <th>Price Each</th>
+                <th>SubTotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let orderDetail of orderDetails">
+                <td>{{ orderDetail.product.productCode }}</td>
+                <td>{{ orderDetail.quantityOrdered }}</td>
+                <td>{{ orderDetail.priceEach }}</td>
+                <td> {{orderDetail.quantityOrdered * orderDetail.priceEach}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p> Total Order Cost: {{total}}
+    <br>
+    On Your Order of {{orderDetails.length}} Items.
+    <br><br>
+    Thank you for shopping with us, {{customerNumber}}!
+</p>
+
+
+<ng-template #noData>
+    <p>No order details found.</p>
+</ng-template>
+                

@@ -1,0 +1,33 @@
+<!-- {"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10419,"orderDate":"2005-05-17","requiredDate":"2005-05-28","status":"Shipped","customerNumber":382},{"orderNumber":10418,"orderDate":"2005-05-16","requiredDate":"2005-05-24","status":"Shipped","customerNumber":412},{"orderNumber":10418,"orderDate":"2005-05-16","requiredDate":"2005-05-24","status":"Shipped","customerNumber":412},{"orderNumber":10418,"orderDate":"2005-05-16","requiredDate":"2005-05-24","status":"Shipped","customerNumber":412},{"orderNumber":10418,"orderDate":"2005-05-16","requiredDate":"2005-05-24","status":"Shipped","customerNumber":412},{"orderNumber":10418,"orderDate":"2005-05-16","requiredDate":"2005-05-24","status":"Shipped","customerNumber":412}, -->
+
+<h1>See Recent Orders</h1>
+
+<div *ngIf="orders.length > 0;">
+    <table>
+        <thead>
+            <tr>
+                <th>Order Number</th>
+                <th>Order Date</th>
+                <th>Required Date</th>
+                <th>Status</th>
+                <th>Customer Number</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td>{{order.orderNumber }}</td>
+                <td>{{ order.orderDate }}</td>
+                <td>{{ order.requiredDate }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.customerNumber }}</td>
+                <td>
+                    <button (click)="viewOrderDetails(order.orderNumber, order.customerNumber)" routerLink="/getOrderDetails/{{order.orderNumber}}/{{order.customerNumber}}" class="large-button">Show Detail</button>
+                </td>
+            </tr>
+        <tbody>
+    </table>
+</div>
+<ng-template #noData>
+    <p>No orders found.</p>
+</ng-template>
